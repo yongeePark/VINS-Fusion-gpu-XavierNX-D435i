@@ -1,15 +1,12 @@
 <?xml version="1.0"?>
 <launch>
     <node name="vins_node" pkg="vins" type="vins_node" output="screen"
-    args="/home/usrg/vins_ws/src/VINS-Fusion-gpu/config/realsense_d435i/scout_0307_backup.yaml" />
+    args="/home/usrg/vins_ws/src/VINS-Fusion-gpu/config/realsense_d435i/scout_mono.yaml" />
 <!-- args="/home/usrg/vins_ws/src/VINS-Fusion-gpu/config/d435i_pixracer/realsense_stereo_imu_config.yaml" /> -->
 
 <!-- total hz : 15-->
-
-<!--
 	<node name="drop_1" pkg="topic_tools" type="drop" output="screen"
 	args="/camera/infra1/image_rect_raw 1 5"/>
 	<node name="drop_2" pkg="topic_tools" type="drop" output="screen"
 	args="/camera/infra2/image_rect_raw 1 5"/>
--->
 </launch>

@@ -366,7 +366,7 @@ Visualization Manager:
       Unreliable: false
       Value: false
     - Alpha: 1
-      Axes Length: 1
+      Axes Length: 0.6000000238418579
       Axes Radius: 0.10000000149011612
       Class: rviz/Pose
       Color: 255; 25; 0
@@ -376,7 +376,7 @@ Visualization Manager:
       Name: Vision_Pose
       Shaft Length: 1
       Shaft Radius: 0.05000000074505806
-      Shape: Axes
+      Shape: Arrow
       Topic: /scout/mavros/vision_pose/pose
       Unreliable: false
       Value: true
@@ -436,10 +436,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.24479621648788452
+      Pitch: 0.009796175174415112
       Target Frame: world
       Value: ThirdPersonFollower (rviz)
-      Yaw: 2.7374422550201416
+      Yaw: 3.552443504333496
     Saved: ~
 Window Geometry:
   Displays:
