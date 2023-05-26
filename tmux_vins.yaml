@@ -1,0 +1,57 @@
+session_name: vins
+
+environment:
+  # DATE: "2022-02-18_21-00"
+  # MISSION_NAME: Lab_demo
+  MISSION_NAME: vins_test
+  # MISSION_NAME: Hancom
+  # MISSION_NAME: coex_left
+
+options:
+  default-command: /bin/bash
+
+windows:
+- window_name: dev window #lamp
+  focus: true
+  layout: tiled
+  shell_command_before:
+  #  - rosparam set /use_sim_time true
+    - export DATE=$(date "+%Y-%m-%d_%H-%M-%S")
+  panes:
+
+    - shell_command: # Core
+      - roscore
+    - shell_command: # Camera 
+      - sleep 6; roslaunch realsense2_camera scout.launch
+    - shell_command: # VINS-Fusion 
+      - sleep 6; roslaunch vins vins_NX_d435i.launch
+    - shell_command: # Rviz 
+      - sleep 6; roslaunch vins vins_rviz.launch 
+    #- shell_command: # px4
+      # this is for Jetson NX
+      #- sleep 5; roslaunch mavros_control jetsonNX.launch
+      # this is for NUC
+      #- sleep 5; sudo chmod 777 /dev/ttyUSB* && roslaunch mavros_control px4.launch
+#- shell_command: # rosbag
+#      - sleep 6; roscd kaist_rosbag/bags; mkdir ${MISSION_NAME}_${DATE}; roslaunch kaist_rosbag kaist_rosbag.launch record_folder:=$(pwd)/${MISSION_NAME}_${DATE}
+        #- shell_command: # Offboard
+        #- sleep 6; roslaunch offboard_drone offboard.launch    
+    #- shell_command: # ouster
+      #- sleep 2; roslaunch ouster_ros ouster.launch   
+    #- shell_command: # Core
+      #- sleep 2; roslaunch hdl_graph_slam BLIO.launch
+      #- sleep 2; roslaunch hdl_graph_slam dronebot_slam.launch          
+    # - shell_command: # Core
+      # - sleep 9; roslaunch tf_listener tf.launch
+    # - shell_command: # Core
+      # - sleep 3; roslaunch cartographer_ros stix.launch
+    # - shell_command: # Core
+      # - sleep 2; roslaunch distance_map distance_map.launch
+    # - shell_command: # Core
+      # - sleep 2; roslaunch astar astar.launch
+    #- shell_command: # Core
+      #- sleep 2; roslaunch mav_control_interface mavros_data_converter.launch
+        #- shell_command: # Core
+      #- sleep 2; roscd kaist_rosbag/bags; mkdir ${MISSION_NAME}_${DATE}; roslaunch kaist_rosbag kaist_rosbag.launch record_folder:=$(pwd)/${MISSION_NAME}_${DATE}
+
+      #- sleep 2; cd ~/catkin_ws/src/kaist_rosbag/bags/; mkdir ${MISSION_NAME}_$(date "+%Y-%m-%d_%H-%M-%S"); roslaunch kaist_rosbag kaist_rosbag.launch record_folder:=${MISSION_NAME}_$(date "+%Y-%m-%d_%H-%M-%S")
